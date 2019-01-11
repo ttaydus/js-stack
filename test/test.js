@@ -1,12 +1,9 @@
 var Stack = require('../lib/Stack.js');
-// var assert = require('assert');
 var should = require('chai').should();
-var myStack;
 describe('Stack', function() {
-
   describe('Class methods', function() {
     beforeEach(function() {
-      myStack = new Stack();
+      myStack = Stack;
     });
     it('should have a push() function', function() {
       myStack.push.should.be.a('function');
@@ -21,9 +18,9 @@ describe('Stack', function() {
 
   describe('Stack behavior', function() {
     beforeEach(function() {
-      myStack = new Stack();
+      myStack = Stack;
     });
-    it('A new stack should start with a size of 0', function(){
+    it('A new stack should start with a size of 0', function() {
       var size = myStack.size();
       size.should.equal(0);
     });
@@ -32,6 +29,9 @@ describe('Stack', function() {
       myStack.push('b');
       myStack.push('c');
       myStack.size().should.equal(3);
+      myStack.pop();
+      myStack.pop();
+      myStack.pop();
     });
     it('A stack should have a size of 0 after removing the previous 3 items added', function() {
       myStack.push('a');
@@ -58,6 +58,8 @@ describe('Stack', function() {
       myStack.pop();
       myStack.pop();
       myStack.size().should.equal(2);
+      myStack.pop();
+      myStack.pop();
     });
     it('The most recently added item should be removed', function() {
       myStack.push('a');
